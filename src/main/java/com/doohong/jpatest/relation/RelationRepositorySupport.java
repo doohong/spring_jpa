@@ -1,5 +1,6 @@
 package com.doohong.jpatest.relation;
 
+import com.doohong.jpatest.relation.domain.QRelation;
 import com.doohong.jpatest.relation.domain.Relation;
 import com.doohong.jpatest.subject.domain.QSubject;
 import com.querydsl.core.types.Projections;
@@ -19,15 +20,18 @@ public class RelationRepositorySupport extends QuerydslRepositorySupport {
 
     private final JPAQueryFactory jpaQueryFactory;
 
+
     public RelationRepositorySupport(JPAQueryFactory jpaQueryFactory){
         super(Relation.class);
         this.jpaQueryFactory = jpaQueryFactory;
     }
     public List<Relation> findBySubjectId(Integer subjectId){
+        QSubject subject = QSubject.subject;
+        QRelation relation = QRelation.relation;
+
         return jpaQueryFactory
-                .select(relation)
-                .from(relation)
-                .leftJoin(QSubject.subject).on(relation.relationId.subject.subjectId.eq(QSubject.subject.subjectId))
+                .selectFrom(relation)
+                .leftJoin(relation.relationId.subject,subject)
                 .where(relation.relationId.subject.subjectId.eq(subjectId)).fetch();
     }
 

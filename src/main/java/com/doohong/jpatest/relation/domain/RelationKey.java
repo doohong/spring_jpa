@@ -16,12 +16,12 @@ import java.io.Serializable;
 @NoArgsConstructor(access= AccessLevel.PROTECTED)
 public class RelationKey implements Serializable {
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "studentId")
     private Student student;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "subjectId")
     private Subject subject;
 
