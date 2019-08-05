@@ -18,7 +18,7 @@ public class Student {
 
     private String studentName;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Relation> relationList;
 
 }

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
@@ -15,6 +17,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor(access= AccessLevel.PROTECTED)
 public class Relation {
     @EmbeddedId
+
     private RelationKey relationId;
 
     private String relationTest;
